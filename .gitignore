@@ -1,0 +1,13 @@
+.DS_STORE
+*.log
+
+node_modules
+
+# IntelliJ project files
+.idea
+*.iml
+*.ipr
+*.iws
+
+dist
+coverage
