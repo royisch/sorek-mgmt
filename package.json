@@ -8,19 +8,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "clean": "rimraf dist",
-    "compile": "better-npm-run compile",
-    "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start",
-    "dev": "better-npm-run dev",
-    "dev:nw": "npm run dev -- --nw",
-    "dev:no-debug": "npm run dev -- --no_debug",
-    "test": "better-npm-run test",
-    "test:dev": "npm run test -- --watch",
-    "deploy": "better-npm-run deploy",
-    "flow:check": "babel-node bin/flow-check",
-    "codecov": "cat coverage/*/lcov.info | codecov"
+    "start": "babel-node --presets es2015  src/server.js"
   },
   "betterScripts": {
     "compile": {
@@ -67,6 +55,7 @@
     "classnames": "^2.2.1",
     "co-request": "^1.0.0",
     "debug": "^2.2.0",
+    "google-spreadsheet": "^1.1.4",
     "history": "^2.0.0",
     "iconv-lite": "^0.4.13",
     "koa": "^2.0.0-alpha.3",
@@ -80,6 +69,7 @@
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0-beta",
     "redux": "^3.0.0",
+    "redux-form": "^4.2.0",
     "redux-thunk": "^1.0.0",
     "sheetrock": "^1.0.1",
     "underscore": "^1.8.3",
@@ -155,6 +145,7 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
     "yargs": "^4.0.0",
-    "webpack-livereload-plugin": "^0.4.0"
+    "webpack-livereload-plugin": "^0.4.0",
+    "express": "^4.12.3"
   }
 }

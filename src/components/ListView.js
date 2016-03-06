@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import {Row, Col, Button} from 'react-bootstrap'
+import FormView from './FormView'
 import { connect, Provider } from 'react-redux'
 import classnames from 'classnames'
 import { bindActionCreators } from 'redux'
@@ -24,6 +25,11 @@ let listView = React.createClass({
     this.props.testChanged('button clicked');
   },
 
+
+  submitted: function() {
+    this.props.testChanged('button clicked');
+  },
+
   render: function() {
     return (
         <Row>
@@ -32,6 +38,7 @@ let listView = React.createClass({
           </Col>
           <Col xs={12}>
             <Button onClick={this.clicked}>CLICK ME</Button>
+            <FormView onSubmit={this.submitted}></FormView>
           </Col>
         </Row>
     );
