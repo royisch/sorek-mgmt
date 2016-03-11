@@ -36,6 +36,7 @@ let listView = React.createClass({
           <Col xs={12}>
             Test Action
           </Col>
+          <a href="/auth/google" ><button id="googleplus">Sign in with Google</button></a>
           <Col xs={12}>
             <Button onClick={this.clicked}>CLICK ME</Button>
             <FormView onSubmit={this.submitted}></FormView>

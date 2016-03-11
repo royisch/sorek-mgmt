@@ -12,7 +12,15 @@ function testChanged(test) {
 
     return (dispatch, getState) => {
         console.log("test changed", test);
-        return dispatch(testAction(test));
+      fetch('/test')
+        .then(function(response) {
+          console.log(response);
+          return dispatch(testAction(test));
+        })
+        .catch(function(ex) {
+        console.log('parsing failed', ex)
+      })
+
     }
 }
 
