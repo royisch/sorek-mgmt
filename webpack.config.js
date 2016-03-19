@@ -5,7 +5,9 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        './src/main.js'
+    ],
+    entry: [
+      './src/main.js' // Your appʼs entry point
     ],
     output: {
         path: path.join(__dirname, '/dist'),
@@ -18,17 +20,18 @@ module.exports = {
         modulesDirectories: ['./src', 'node_modules']
     },
     plugins: [
-        new LiveReloadPlugin()
+        new LiveReloadPlugin(),
+        //new webpack.HotModuleReplacementPlugin()
     ],
     module: {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel',
+                loader: ['babel'],
                 exclude: /node_modules/,
                 query: {
-                    cacheDirectory: true,
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react'],
+                    cacheDirectory: true
                 }
             }
         ]

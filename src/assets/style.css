@@ -4,3 +4,7 @@ label.error {
   font-size: 12px;
   font-weight: 300;
 }
+
+.login-screen {
+  background-image: url('../assets/img/grapes.jpeg') ;
+}

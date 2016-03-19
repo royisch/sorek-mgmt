@@ -1,5 +1,7 @@
 import googleDrive from 'google-drive'
 import passport from 'passport'
+import request from 'request'
+
 var cookieName = 'sm-cookie';
 module.exports = {
   initGoogleAuth: function (app) {
@@ -17,14 +19,12 @@ module.exports = {
     passport.deserializeUser(serializer);
 
     passport.use(new GoogleStrategy({
-      callbackURL: 'http://localhost:3000/auth/google/return',
-      clientID:GOOGLE_APP_ID,
-      clientSecret:GOOGLE_APP_SECRET,
-      passReqToCallback   : true
+        callbackURL: 'http://localhost:3000/auth/google/return',
+        clientID:GOOGLE_APP_ID,
+        clientSecret:GOOGLE_APP_SECRET,
+        passReqToCallback   : true
       },
       function(request, accessToken, refreshToken, profile, done) {
-        profile.accessToken = accessToken;
-        profile.refreshToken = refreshToken;
         process.nextTick(function () {
           return done(null, profile);
         });
@@ -42,13 +42,22 @@ module.exports = {
       passport.authenticate('google', { failureRedirect: '/' }),
       function(req, res) {
         // Successful authentication, redirect home.
+        console.log('success');
         console.log(req.cookies[cookieName]);
-        res.redirect('/listDocs');
+
+        request('https://www.googleapis.com/drive/v2/files', function(error, response, body) {
+          console.log(arguments);
+          if (!error && response.statusCode == 200) {
+            console.log(arguments);
+            res.send('puta madre');
+          }
+        });
+        //res.redirect('/listDocs');
       });
 
     app.get('getDocs', function(req, res) {
       console.log(req.cookies[cookieName]);
-      res.send({'puta': 'madre'});
+      res.send('puta');
     });
 
   }
